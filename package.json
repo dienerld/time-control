@@ -1,0 +1,22 @@
+{
+  "name": "boilerplate-nuxt-ui",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/devtools": "latest",
+    "@nuxt/ui": "^3.0.0-alpha.8",
+    "@nuxtjs/i18n": "^9.0.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-format": "^0.1.2",
+    "nuxt": "^3.14.159",
+    "nuxt-auth-utils": "^0.5.3"
+  }
+}
