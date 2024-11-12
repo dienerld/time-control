@@ -1,4 +1,14 @@
 <script setup lang="ts">
+const props = withDefaults(defineProps<{
+  title: string
+  labelBtnPrimary: string
+  labelBtnSecondary: string
+}>(), {
+  title: 'Unlock the Power of <br> Cutting-Edge Innovation',
+  labelBtnPrimary: 'Get Started',
+  labelBtnSecondary: 'Request Demo',
+})
+
 const icons = [
   'i-simple-icons-adobeillustrator',
   'i-simple-icons-amazon',
@@ -31,7 +41,7 @@ const icons = [
 </script>
 
 <template>
-  <div class="relative flex h-full min-h-dvh w-full items-center justify-center">
+  <div class="relative flex h-full flex-1 w-full items-center justify-center">
     <!-- Background Image (try a dark image) -->
     <NuxtImg
       class="absolute z-10 h-full w-full object-cover object-center"
@@ -41,15 +51,14 @@ const icons = [
     <div class="relative z-10 w-11/12 md:w-10/12">
       <div class="flex flex-col items-start justify-start">
         <h1 class="mt-4 text-left text-5xl font-normal text-dark-100 sm:text-6xl md:text-7xl">
-          Unlock the Power of <br>
-          Cutting-Edge Innovation
+          {{ props.title }}
         </h1>
         <div class="mt-8 flex gap-4">
           <UButton variant="solid" to="#" size="lg" trailing class="rounded-full px-8">
-            Get started
+            {{ props.labelBtnPrimary }}
           </UButton>
-          <UButton variant="link" to="#" size="lg" class="rounded-full px-8">
-            Request demo
+          <UButton variant="outline" to="#" size="lg" class="rounded-full px-8">
+            {{ props.labelBtnSecondary }}
           </UButton>
         </div>
       </div>

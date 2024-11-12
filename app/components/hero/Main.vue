@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-full flex-1 w-full items-center justify-center"
+    class="relative flex h-full flex-1 w-full items-center justify-center "
   >
     <div class="relative z-20 w-11/12 md:w-10/12">
       <div

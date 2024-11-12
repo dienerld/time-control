@@ -1,22 +1,19 @@
 <script setup lang="ts">
-const name = ref('Nuxt UI Starter')
 const toast = useToast()
-// const { t } = useI18n({ useScope: 'local' })
+const { t } = useI18n({ useScope: 'local' })
+
 defineShortcuts({
-  meta_k: () => { name.value = 'Diener' },
   a: () => toast.add({ title: 'Hello', description: 'World' }),
 })
 </script>
 
 <template>
   <HeaderSaas />
-  <!-- <HeroBig
+  <HeroDark
     :title="t('title')"
-    :description="t('description')"
     :label-btn-primary="t('labelBtnPrimary')"
     :label-btn-secondary="t('labelBtnSecondary')"
-  /> -->
-  <HeroSimple />
+  />
 </template>
 
 <i18n lang="json">

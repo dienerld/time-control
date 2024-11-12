@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-dvh w-full items-center justify-center bg-dark-50 dark:bg-dark-950"
+    class="relative flex flex-1 w-full items-center justify-center overflow-hidden"
   >
     <div
       class="absolute top-0 left-0 z-10 flex h-full w-full flex-col md:flex-row"

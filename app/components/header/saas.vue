@@ -1,6 +1,6 @@
 <template>
   <header
-    class="relative flex w-full items-center justify-between bg-neutral-50 py-2 px-4 dark:bg-dark-950"
+    class="relative flex w-full items-center justify-between py-2 px-4"
   >
     <div class="flex w-auto items-center justify-start">
       <Logo />
