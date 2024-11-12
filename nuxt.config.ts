@@ -3,8 +3,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-11-11',
-  modules: ['@nuxt/ui', 'nuxt-auth-utils', '@nuxtjs/i18n'],
+  modules: [
+    '@nuxt/ui',
+    'nuxt-auth-utils',
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    'nuxt-marquee',
+    '@vueuse/motion/nuxt',
+    'nuxt-svgo',
+  ],
   css: ['~/assets/css/main.css'],
+  svgo: {
+    componentPrefix: 'I',
+    autoImportPath: '~/assets/svg',
+  },
   i18n: {
     lazy: true,
     defaultLocale: 'br',

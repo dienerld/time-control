@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "css"
   },
   "editor.quickSuggestions": {
     "strings": "on"
@@ -105,5 +105,7 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "iconify.annotations": false,
+  "iconify.inplace": false
 }
