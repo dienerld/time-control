@@ -13,11 +13,11 @@ const images = [
 
 <template>
   <div
-    class="relative flex h-full min-h-dvh w-full flex-col items-center justify-center bg-dark-50 pt-32 pb-4 xl:pt-24 dark:bg-dark-950"
+    class="relative flex h-full flex-1 w-full flex-col items-center justify-center pt-32 pb-4 xl:pt-24"
   >
     <div class="relative z-20 grid w-full grid-cols-12 gap-y-12 md:gap-y-24">
       <div class="col-span-full flex flex-col items-start justify-center px-4">
-        <h1 class="mt-4 w-full text-left font-sans text-5xl font-light text-dark-900 md:text-7xl dark:text-dark-50">
+        <h1 class="mt-4 w-full text-left font-sans text-5xl font-light md:text-7xl">
           Share <span class="font-instrument inline-block italic">skills</span>
           <br>
           &
@@ -29,10 +29,10 @@ const images = [
           faster!
         </p>
         <div class="mt-4 flex w-auto items-start justify-start gap-2">
-          <UButton variant="solid" color="neutral" size="lg" class="rounded-full">
+          <UButton variant="solid" size="lg" class="rounded-full">
             Get started
           </UButton>
-          <UButton variant="link" color="neutral" size="lg" class="rounded-full">
+          <UButton variant="outline" size="lg" class="rounded-full">
             Discover more
           </UButton>
         </div>

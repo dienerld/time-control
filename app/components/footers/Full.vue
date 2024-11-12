@@ -142,7 +142,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0"
             >
               {{ inner_link.label }}
@@ -157,7 +157,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}
@@ -172,7 +172,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}
@@ -204,13 +204,13 @@ const bottom_navigation = [
     </div>
     <div class="grid grid-cols-12 w-full gap-6">
       <div class="col-span-full lg:col-span-10">
-        <UButton type="button" variant="link" color="neutral" class="p-0" aria-readonly="true">
+        <UButton type="button" variant="link"  class="p-0" aria-readonly="true">
           ©LandiNuxt is a Open Source Project by Eco Development Studios
         </UButton>
       </div>
       <div class="col-span-full lg:col-span-2 flex gap-x-4 w-full items-center">
         <template v-for="(nav, index) in bottom_navigation" :key="index">
-          <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0">
+          <UButton :to="nav.link" target="_blank" variant="link"  class="p-0">
             {{ nav.label }}
           </UButton>
         </template>

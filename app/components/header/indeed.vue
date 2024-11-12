@@ -33,7 +33,7 @@ const items = [
     <nav class="hidden w-full flex-1 items-center justify-center gap-2 lg:flex">
       <UButton
         variant="ghost"
-        color="neutral"
+
         size="lg"
         to="#"
         class="rounded-full"
@@ -42,7 +42,7 @@ const items = [
       </UButton>
       <UButton
         variant="ghost"
-        color="neutral"
+
         size="lg"
         to="#"
         class="rounded-full"
@@ -53,7 +53,7 @@ const items = [
       <UDropdownMenu :items="items">
         <UButton
           variant="ghost"
-          color="neutral"
+
           size="lg"
           label="Services"
           class="rounded-full"
@@ -73,7 +73,7 @@ const items = [
       </UDropdownMenu>
       <UButton
         variant="ghost"
-        color="neutral"
+
         size="lg"
         to="#"
         class="rounded-full"
@@ -82,7 +82,7 @@ const items = [
       </UButton>
       <UButton
         variant="ghost"
-        color="neutral"
+
         size="lg"
         to="#"
         class="rounded-full"

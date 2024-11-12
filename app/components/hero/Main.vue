@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-full min-h-dvh w-full items-center justify-center bg-dark-50 dark:bg-dark-950"
+    class="relative flex h-full flex-1 w-full items-center justify-center"
   >
     <div class="relative z-20 w-11/12 md:w-10/12">
       <div
@@ -31,7 +31,7 @@
         <div
           class="mt-8 flex flex-col-reverse items-center justify-center gap-4 lg:flex-row"
         >
-          <UButton variant="ghost" to="#" size="lg">
+          <UButton variant="outline" to="#" size="lg">
             More info
           </UButton>
           <UButton variant="solid" to="#" size="lg">

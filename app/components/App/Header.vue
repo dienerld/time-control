@@ -7,25 +7,25 @@
       </NuxtLink>
     </div>
     <nav class="hidden w-full flex-1 items-center justify-center gap-2 lg:flex">
-      <UButton variant="ghost" color="neutral" size="lg" to="/" class="rounded-full">
+      <UButton variant="ghost"  size="lg" to="/" class="rounded-full">
         Home
       </UButton>
       <UDropdownMenu :items="items">
-        <UButton variant="ghost" color="neutral" size="lg" label="Components" class="rounded-full cursor-pointer">
+        <UButton variant="ghost"  size="lg" label="Components" class="rounded-full cursor-pointer">
           <template #trailing>
             <UIcon name="i-heroicons-chevron-down" />
           </template>
         </UButton>
         <template #item="{ item }">
-          <UButton block variant="link" :to="item.to" color="neutral" size="lg">
+          <UButton block variant="link" :to="item.to"  size="lg">
             {{ item.label }}
           </UButton>
         </template>
       </UDropdownMenu>
-      <UButton variant="ghost" color="neutral" size="lg" to="#" class="rounded-full">
+      <UButton variant="ghost"  size="lg" to="#" class="rounded-full">
         Instructions
       </UButton>
-      <UButton variant="ghost" color="neutral" size="lg" to="#" class="rounded-full">
+      <UButton variant="ghost"  size="lg" to="#" class="rounded-full">
         Contribution
       </UButton>
     </nav>

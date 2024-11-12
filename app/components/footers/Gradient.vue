@@ -132,10 +132,10 @@ const resources_navigation = [
           Lorem ipsum dolor sit amet <br> consectetur adipisicing elit.
         </p>
         <div class="flex items-center justify-start gap-x-4 text-dark-950/50 dark:text-dark-50/50">
-          <UButton icon="i-simple-icons-facebook" variant="link" color="neutral" to="#" target="_blank" />
-          <UButton icon="i-simple-icons-instagram" variant="link" color="neutral" to="#" target="_blank" />
-          <UButton icon="i-simple-icons-x" variant="link" color="neutral" to="#" target="_blank" />
-          <UButton icon="i-simple-icons-github" variant="link" color="neutral" to="#" target="_blank" />
+          <UButton icon="i-simple-icons-facebook" variant="link"  to="#" target="_blank" />
+          <UButton icon="i-simple-icons-instagram" variant="link"  to="#" target="_blank" />
+          <UButton icon="i-simple-icons-x" variant="link"  to="#" target="_blank" />
+          <UButton icon="i-simple-icons-github" variant="link"  to="#" target="_blank" />
         </div>
       </div>
       <ul class="col-span-full md:col-span-6 lg:col-span-2 xl:col-span-1 flex flex-col gap-y-2 w-full">
@@ -145,7 +145,7 @@ const resources_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0"
             >
               {{ inner_link.label }}
@@ -160,7 +160,7 @@ const resources_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}
@@ -175,7 +175,7 @@ const resources_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}
@@ -190,7 +190,7 @@ const resources_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}

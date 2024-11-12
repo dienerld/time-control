@@ -143,7 +143,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index" class="px-4 ">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="md"
+              :to="inner_link.link" target="_blank" variant="link"  size="md"
               class="p-0 uppercase"
             >
               {{ inner_link.label }}
@@ -162,7 +162,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index" class="px-4 ">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="md"
+              :to="inner_link.link" target="_blank" variant="link"  size="md"
               class="p-0 uppercase"
             >
               {{ inner_link.label }}
@@ -179,7 +179,7 @@ const bottom_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index" class="px-4">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="md"
+              :to="inner_link.link" target="_blank" variant="link"  size="md"
               class="p-0 uppercase"
             >
               {{ inner_link.label }}
@@ -191,7 +191,7 @@ const bottom_navigation = [
         class="col-span-full flex flex-col md:flex-row gap-4 w-full items-center justify-center py-4 border-t border-dark-950 dark:border-dark-50"
       >
         <template v-for="(nav, index) in bottom_navigation" :key="index">
-          <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0 uppercase">
+          <UButton :to="nav.link" target="_blank" variant="link"  class="p-0 uppercase">
             {{ nav.label }}
           </UButton>
         </template>

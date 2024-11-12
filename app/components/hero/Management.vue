@@ -1,7 +1,7 @@
 <template>
   <div
     v-motion-fade :delay="100" :duration="1250"
-    class="relative flex flex-col h-full min-h-dvh w-full items-center justify-center bg-dark-50 dark:bg-dark-950 py-24"
+    class="relative flex flex-col h-full  w-full items-center justify-center py-24"
   >
     <div class="relative z-20 w-11/12 md:w-10/12">
       <div class="flex flex-col items-center justify-center">

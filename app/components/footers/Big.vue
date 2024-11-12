@@ -125,7 +125,7 @@ const social_media_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0"
             >
               {{ inner_link.label }}
@@ -140,7 +140,7 @@ const social_media_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}
@@ -155,7 +155,7 @@ const social_media_navigation = [
           </li>
           <li v-for="(inner_link, _index) in nav.links" :key="_index">
             <UButton
-              :to="inner_link.link" target="_blank" variant="link" color="neutral" size="lg"
+              :to="inner_link.link" target="_blank" variant="link"  size="lg"
               class="p-0 hover:underline"
             >
               {{ inner_link.label }}

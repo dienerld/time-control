@@ -91,21 +91,21 @@ const social_network_navigation = [
       <div class="flex w-full md:w-1/2 items-start justify-start sm:justify-end gap-x-24">
         <div class="flex flex-col gap-y-2">
           <template v-for="(nav, index) in navigation" :key="index">
-            <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0">
+            <UButton :to="nav.link" target="_blank" variant="link"  class="p-0">
               {{ nav.label }}
             </UButton>
           </template>
         </div>
         <div class="flex flex-col gap-y-2">
           <template v-for="(b_nav, index) in bottom_navigation" :key="index">
-            <UButton :to="b_nav.link" target="_blank" variant="link" color="neutral" class="p-0">
+            <UButton :to="b_nav.link" target="_blank" variant="link"  class="p-0">
               {{ b_nav.label }}
             </UButton>
           </template>
         </div>
         <div class="flex flex-col gap-y-2">
           <template v-for="(social, index) in social_network_navigation" :key="index">
-            <UButton :to="social.link" target="_blank" variant="link" color="neutral" class="p-0">
+            <UButton :to="social.link" target="_blank" variant="link"  class="p-0">
               {{ social.label }}
             </UButton>
           </template>

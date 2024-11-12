@@ -26,7 +26,7 @@ const images = [
     <div class="flex w-full flex-col gap-4 md:flex-row md:gap-0">
       <div class="mx-auto flex w-full flex-col items-center justify-center gap-2 md:w-1/2">
         <UBadge
-          variant="outline" color="neutral"
+          variant="outline"
           class="flex items-center justify-center gap-4 rounded-full px-4 md:px-12" size="lg"
         >
           <UIcon name="i-heroicons-solid-sparkles" size="size-4" />

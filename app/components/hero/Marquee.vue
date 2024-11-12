@@ -33,7 +33,7 @@ const icons = [
 <template>
   <!-- Install npx nuxi@latest module add marquee -->
   <div
-    class="relative flex h-full min-h-dvh w-full flex-col items-center justify-center bg-dark-50 pt-32 dark:bg-dark-950"
+    class="relative flex h-full flex-1 w-full flex-col items-center justify-center  pt-32"
   >
     <div class="relative z-20 mb-24 w-11/12 md:w-10/12">
       <div class="flex flex-col items-center justify-center">

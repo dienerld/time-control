@@ -42,12 +42,12 @@ const services = ref([
       <nav
         class="relative z-10 hidden items-center justify-start gap-2 lg:flex"
       >
-        <UButton variant="link" color="neutral" size="lg" to="#">
+        <UButton variant="link"  size="lg" to="#">
           Home
         </UButton>
         <UButton
           variant="link"
-          color="neutral"
+
           size="lg"
           to="#"
           @click="showMenu = !showMenu"
@@ -62,16 +62,16 @@ const services = ref([
           </template>
           Services
         </UButton>
-        <UButton variant="link" color="neutral" size="lg" to="#">
+        <UButton variant="link"  size="lg" to="#">
           Tools
         </UButton>
-        <UButton variant="link" color="neutral" size="lg" to="#">
+        <UButton variant="link"  size="lg" to="#">
           Contact
         </UButton>
       </nav>
       <USlideover title="Menu" close-icon="i-heroicons-x-mark">
         <UButton
-          color="neutral"
+
           icon="i-heroicons-bars-3"
           variant="link"
           size="xl"
@@ -82,11 +82,11 @@ const services = ref([
           <nav
             class="relative z-10 flex flex-col items-center justify-start gap-2"
           >
-            <UButton variant="link" color="neutral" size="lg" to="#">
+            <UButton variant="link"  size="lg" to="#">
               Home
             </UButton>
             <UCollapsible class="w-auto">
-              <UButton variant="link" color="neutral" size="lg" to="#">
+              <UButton variant="link"  size="lg" to="#">
                 Services
                 <template #trailing>
                   <UIcon
@@ -105,7 +105,7 @@ const services = ref([
                 <div class="flex w-full flex-col gap-y-2">
                   <UButton
                     variant="link"
-                    color="neutral"
+
                     size="lg"
                     to="#"
                     class="flex items-center justify-center opacity-75"
@@ -114,7 +114,7 @@ const services = ref([
                   </UButton>
                   <UButton
                     variant="link"
-                    color="neutral"
+
                     size="lg"
                     to="#"
                     class="flex items-center justify-center opacity-75"
@@ -123,7 +123,7 @@ const services = ref([
                   </UButton>
                   <UButton
                     variant="link"
-                    color="neutral"
+
                     size="lg"
                     to="#"
                     class="flex items-center justify-center opacity-75"
@@ -133,10 +133,10 @@ const services = ref([
                 </div>
               </template>
             </UCollapsible>
-            <UButton variant="link" color="neutral" size="lg" to="#">
+            <UButton variant="link"  size="lg" to="#">
               Tools
             </UButton>
-            <UButton variant="link" color="neutral" size="lg" to="#">
+            <UButton variant="link"  size="lg" to="#">
               Contact
             </UButton>
           </nav>

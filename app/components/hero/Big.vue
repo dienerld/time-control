@@ -31,7 +31,7 @@ const text2 = computed(() => props.splittedText?.split('||')[1]?.trim())
 
 <template>
   <div
-    class="relative flex h-full min-h-dvh w-full flex-col items-center justify-center  pt-32"
+    class="relative flex h-full flex1 w-full flex-col items-center justify-center  pt-32"
   >
     <div class="relative z-20 w-11/12 md:w-10/12">
       <div class="flex flex-col items-center justify-center">

@@ -2,14 +2,14 @@
     <footer class="relative flex h-auto w-full flex-col gap-8 overflow-hidden px-4 py-4 mt-56 md:mt-96">
         <div class="flex flex-col items-center justify-center gap-4 md:flex-row">
             <template v-for="(nav, index) in navigation" :key="index">
-                <UButton :to="nav.link" variant="link" color="neutral" class="p-0" size="xs">
+                <UButton :to="nav.link" variant="link"  class="p-0" size="xs">
                     {{ nav.label }}
                 </UButton>
             </template>
         </div>
         <div class="flex flex-col items-center justify-center gap-4 md:flex-row">
             <template v-for="(nav, index) in social_media_navigation" :key="index">
-                <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0" size="xs">
+                <UButton :to="nav.link" target="_blank" variant="link"  class="p-0" size="xs">
                     {{ nav.label }}
                 </UButton>
             </template>

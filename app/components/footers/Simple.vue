@@ -58,7 +58,7 @@ const bottom_navigation = [
           </div>
           <div class="flex gap-x-4">
             <template v-for="(nav) in navigation" :key="nav.label">
-              <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0">
+              <UButton :to="nav.link" target="_blank" variant="link"  class="p-0">
                 {{ nav.label }}
               </UButton>
             </template>
@@ -79,13 +79,13 @@ const bottom_navigation = [
       </div>
       <div class="flex items-center justify-between pt-12 px-4 pb-4 w-full">
         <div class="w-full">
-          <UButton type="button" variant="link" color="neutral" class="p-0" aria-readonly="true">
+          <UButton type="button" variant="link"  class="p-0" aria-readonly="true">
             ©LandiNuxt is a Open Source Project by Eco Development Studios
           </UButton>
         </div>
         <div class="h-auto flex gap-x-4 w-full justify-end">
           <template v-for="(nav, index) in bottom_navigation" :key="index">
-            <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0">
+            <UButton :to="nav.link" target="_blank" variant="link"  class="p-0">
               {{ nav.label }}
             </UButton>
           </template>

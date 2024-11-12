@@ -62,14 +62,14 @@ const social_media_navigation = [
   <footer class="w-full h-auto relative py-4 gap-8 flex flex-col px-4 overflow-hidden bg-dark-50 dark:bg-dark-950">
     <div class="flex flex-col md:flex-row items-center justify-center gap-4">
       <template v-for="(nav, index) in other_navigation" :key="index">
-        <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0" size="xs">
+        <UButton :to="nav.link" target="_blank" variant="link"  class="p-0" size="xs">
           {{ nav.label }}
         </UButton>
       </template>
     </div>
     <div class="flex flex-col md:flex-row items-center justify-center gap-4">
       <template v-for="(nav, index) in social_media_navigation" :key="index">
-        <UButton :to="nav.link" target="_blank" variant="link" color="neutral" class="p-0" size="xs">
+        <UButton :to="nav.link" target="_blank" variant="link"  class="p-0" size="xs">
           {{ nav.label }}
         </UButton>
       </template>

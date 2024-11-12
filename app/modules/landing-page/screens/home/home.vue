@@ -16,7 +16,7 @@ defineShortcuts({
     :label-btn-primary="t('labelBtnPrimary')"
     :label-btn-secondary="t('labelBtnSecondary')"
   /> -->
-  <HeroDesaturate />
+  <HeroSimple />
 </template>
 
 <i18n lang="json">
