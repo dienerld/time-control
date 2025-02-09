@@ -19,11 +19,11 @@ export default defineNuxtConfig({
   },
   i18n: {
     lazy: true,
-    defaultLocale: 'br',
+    defaultLocale: 'pt_br',
     locales: [{
-      code: 'br',
+      code: 'pt_br',
       name: 'Português',
-      file: 'br.ts',
+      file: 'pt-BR.ts',
     }, {
       code: 'en',
       name: 'English',

@@ -1,7 +1,21 @@
+/*
+Comentado por conter bug com tailwindcss
+Usando formato abaixo
 @import 'tailwindcss';
+ */
+
+/* Remover após correção de bug do import tailwindcss */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme' layer(theme) theme(static);
+@import 'tailwindcss/preflight' layer(base);
+@import 'tailwindcss/utilities' layer(utilities);
+
+/* Then import "@nuxt/ui": */
+@import '@nuxt/ui';
+
 @import '@nuxt/ui';
 @import './global.css' layer(utilities);
-@plugin '@tailwindcss/typography';
+/* @plugin '@tailwindcss/typography'; */
 @plugin 'tailwindcss-animate';
 
 @theme {

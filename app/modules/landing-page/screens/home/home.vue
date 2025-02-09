@@ -24,7 +24,7 @@ defineShortcuts({
     "labelBtnPrimary": "Start now",
     "labelBtnSecondary": "Learn more"
   },
-  "br": {
+  "pt_br": {
     "title": "Bem-vindo ao nosso site",
     "description": "Olá seja bem vindo ao nosso site, aqui você encontrará todas as informações que você precisa para começar a explorar nossos serviços.",
     "labelBtnPrimary": "Comece agora",
