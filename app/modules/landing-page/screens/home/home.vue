@@ -8,7 +8,7 @@ defineShortcuts({
 </script>
 
 <template>
-  <HeaderSaas />
+  <HeaderIndeed />
   <HeroDark
     :title="t('title')"
     :label-btn-primary="t('labelBtnPrimary')"
