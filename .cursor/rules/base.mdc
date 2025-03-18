@@ -1,9 +1,9 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: true
 ---
- # Regras para Geração de Código com LLMs
+# Regras para Geração de Código com LLMs
 
 ## Estrutura e Organização
 
@@ -13,7 +13,6 @@ alwaysApply: true
     ├── [module-name]/
     │   ├── components/
     │   ├── composables/
-    │   ├── entities/
     │   └── screens/
   ```
 
@@ -25,13 +24,69 @@ alwaysApply: true
 
 - O projeto é separado em módulos onde cada módulo vai representar uma funcionalidade da aplicação. Pode acontecer de uma funcionalidade depender de outra então pode ser importado um módulo dentro de outro, mas deve ser feito de forma a evitar muito acoplamento entre módulos. Serviços que serão compartilhados por muitos módulos devem estar localizados no composables global que pode ser importado por todos os módulos facilmente. Esta regra vale para componentes também.
 - Dentro de cada módulo dever ter seus composables, components e screens. Essa Screen é o que agrupa tudo que será renderizado.
-- Para cada screen ele vai ter um arquivo que é responsável por indexar para o nuxt a página. Como exemplo o [index.vue](mdc:app/pages/index.vue)
+- Para cada screen ele vai ter um arquivo que é responsável por indexar para o nuxt a página. Como exemplo o [index.vue](mdc:app/pague)
 - Prefira componentes simples e toda parte que envolva uma lógica deve ficar dentro de um composable
 - Utilize o ESLint para manter a consistência do código
 - A Aplicação é construída utilizando Nuxt3 com compatibilidade para nuxt4 e Nuxt Ui na versão 3
 - Implemente testes unitários para todas as funções principais
 - Implemente testes unitários para components que tem mais de uma utilização
 - Todos os testes deve ser utilizando vitest e caso necessário vue-test-utils
+
+## Estrutura do Servidor
+
+- O servidor deve seguir a estrutura:
+  ```
+  server/
+    ├── api/           # Endpoints da API
+    │   ├── [domain]/  # Agrupamento por domínio
+    │   │   ├── index.ts
+    │   │   ├── types.ts
+    │   │   └── validators.ts
+    ├── database/       # Configurações e modelos do banco de dados
+    │   ├── schema.ts   # Estrutura do banco de dados com as tipagens built-in
+    │   ├── migrations/ # Migrações do banco de dados
+    │   └── seeds/      # Dados iniciais
+    └── utils/          # Utilitários e helpers do servidor
+        ├── errors/     # Classes e tipos de erro
+        ├── validators/ # Validadores reutilizáveis
+        └── helpers/    # Funções auxiliares
+  ```
+
+- Regras para o servidor:
+  - Use TypeScript para todo o código do servidor
+  - Mantenha os endpoints da API organizados por domínio
+  - Implemente validação de dados em todas as rotas
+  - Use middleware para autenticação e autorização
+  - Use tipos explícitos para todas as funções e parâmetros
+  - Implemente logging adequado para debugging
+
+### Exemplos de Código do Servidor
+
+#### Endpoint da API
+```typescript
+// api/users/index.ts
+const schema = z.object({})
+
+export default defineEventHandler(async (event) => {
+  try {
+  const body = await readBody(event)
+  const validatedData = schema.parse(body)
+  
+    const user = await db.insert(tables.users)
+      .values({name: validatedData.name})
+      .returning({
+        id: tables.id
+      })
+
+    return user
+  } catch (error) {
+    throw createError({
+      statusCode: 400,
+      message: 'Erro ao criar usuário'
+    })
+  }
+})
+```
 
 ## Padrões de Código
 
@@ -93,25 +148,29 @@ export interface ComponentProps {
   title: string
   description?: string
 }
+
+export interface UploadData {
+  name: string
+}
 </script>
 
 <script setup lang="ts">
 const props = defineProps<ComponentProps>()
 const emit = defineEmits<{
-  (e: 'update', value: string): void
+  (e: 'wantsUpload', data: UploadData)
 }>()
 </script>
 ```
 
 ### Composable
 ```typescript
-export function useExample {
+export function useExample() {
   const state = ref<string>('')
-
-  function updateState(value: string){
+  
+  function updateState(value: string) {
     state.value = value
   }
-
+  
   return {
     state,
     updateState
@@ -124,9 +183,9 @@ export function useExample {
 describe('useExample', () => {
   it('should update state', () => {
     const { state, updateState } = useExample()
-
+    
     updateState('test')
-
+    
     expect(state.value).toBe('test')
   })
 })
