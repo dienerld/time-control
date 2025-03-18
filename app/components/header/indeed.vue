@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { locale, setLocale } = useI18n()
+
 const items = [
   [
     {
@@ -15,6 +17,16 @@ const items = [
     },
   ],
 ]
+
+const localeName = computed(() => locale.value === 'en' ? 'En' : 'Pt-Br')
+function toggleLocale() {
+  if (locale.value === 'en') {
+    setLocale('pt_br')
+  }
+  else {
+    setLocale('en')
+  }
+}
 </script>
 
 <template>
@@ -93,12 +105,13 @@ const items = [
     <div class="flex flex-1 items-center justify-end gap-4 lg:flex-none">
       <UButton
         block
-        label="English"
+        :label="localeName"
         variant="ghost"
         color="primary"
         size="lg"
         icon="i-heroicons-globe-alt"
         class="hidden w-auto rounded-full lg:flex"
+        @click="toggleLocale"
       />
       <UButton
         block
