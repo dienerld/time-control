@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
  # Regras para Geração de Código com LLMs
@@ -23,12 +23,12 @@ alwaysApply: true
   - Screens: `kebab-case.vue`
   - Testes: `[arquivo-original].spec.ts`
 
-- O projeto é separado separado em módulos onde cada módulo vai representar uma funcionalide da aplicação. Pode acontecer de uma funcionalidade depender de outra então pode ser importado um módulo dentro de outro, mas deve ser feito de forma a evitar muito acoplamento entre módulos. Serviços que serão compatilhados por muitos módulos devem estar localizados no composables global que pode ser importado por todos os módulos facilmente. Esta regra vale para componentes também.
+- O projeto é separado em módulos onde cada módulo vai representar uma funcionalidade da aplicação. Pode acontecer de uma funcionalidade depender de outra então pode ser importado um módulo dentro de outro, mas deve ser feito de forma a evitar muito acoplamento entre módulos. Serviços que serão compartilhados por muitos módulos devem estar localizados no composables global que pode ser importado por todos os módulos facilmente. Esta regra vale para componentes também.
 - Dentro de cada módulo dever ter seus composables, components e screens. Essa Screen é o que agrupa tudo que será renderizado.
-- Para cada screen ele vai ter um arquivo que é resposável por indexar para o nuxt a página. Como exemplo o [index.vue](mdc:app/pages/index.vue)
+- Para cada screen ele vai ter um arquivo que é responsável por indexar para o nuxt a página. Como exemplo o [index.vue](mdc:app/pages/index.vue)
 - Prefira componentes simples e toda parte que envolva uma lógica deve ficar dentro de um composable
 - Utilize o ESLint para manter a consistência do código
-- A Aplicação é construida utilizando Nuxt3 com compatibilidade para nuxt4 e Nuxt Ui na versão 3
+- A Aplicação é construída utilizando Nuxt3 com compatibilidade para nuxt4 e Nuxt Ui na versão 3
 - Implemente testes unitários para todas as funções principais
 - Implemente testes unitários para components que tem mais de uma utilização
 - Todos os testes deve ser utilizando vitest e caso necessário vue-test-utils
@@ -107,11 +107,11 @@ const emit = defineEmits<{
 ```typescript
 export function useExample {
   const state = ref<string>('')
-  
+
   function updateState(value: string){
     state.value = value
   }
-  
+
   return {
     state,
     updateState
@@ -124,9 +124,9 @@ export function useExample {
 describe('useExample', () => {
   it('should update state', () => {
     const { state, updateState } = useExample()
-    
+
     updateState('test')
-    
+
     expect(state.value).toBe('test')
   })
 })
