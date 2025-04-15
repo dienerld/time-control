@@ -2,47 +2,51 @@
   "name": "boilerplate-nuxt-ui",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c",
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:migrate": "drizzle-kit migrate --config ./config/drizzle.config.ts",
-    "db:push": "drizzle-kit push --config ./config/drizzle.config.ts",
-    "db:studio": "drizzle-kit studio --config ./config/drizzle.config.ts"
+    "drizzle": "drizzle-kit --config ./config/drizzle.config.ts",
+    "db:generate": "pnpm run drizzle generate",
+    "db:migrate": "pnpm run drizzle migrate",
+    "db:push": "pnpm run drizzle push",
+    "db:studio": "pnpm run drizzle studio"
   },
   "dependencies": {
+    "@libsql/client": "^0.15.2",
+    "@trpc/client": "^11.1.0",
+    "@trpc/server": "^11.1.0",
     "@vueuse/motion": "^3.0.3",
-    "better-sqlite3": "^11.8.1",
-    "drizzle-orm": "^0.39.3",
-    "ulid": "^2.3.0"
+    "drizzle-orm": "^0.41.0",
+    "trpc-nuxt": "^1.0.4",
+    "ulid": "^3.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.10.1",
+    "@antfu/eslint-config": "^4.12.0",
     "@iconify-json/heroicons": "^1.2.2",
+    "@iconify-json/lucide": "^1.2.35",
     "@nuxt/devtools": "latest",
-    "@nuxt/image": "^1.9.0",
-    "@nuxt/ui": "^3.0.0",
-    "@nuxtjs/i18n": "^9.3.1",
-    "@types/better-sqlite3": "^7.6.12",
-    "drizzle-kit": "^0.30.4",
-    "eslint": "^9.22.0",
+    "@nuxt/image": "^1.10.0",
+    "@nuxt/ui": "^3.0.2",
+    "drizzle-kit": "^0.30.6",
+    "eslint": "^9.24.0",
     "eslint-plugin-format": "^1.0.1",
-    "nuxt": "^3.16.0",
-    "nuxt-auth-utils": "^0.5.16",
-    "nuxt-marquee": "^1.0.4",
-    "nuxt-svgo": "^4.0.15",
-    "tailwindcss-animate": "^1.0.7"
+    "h3-zod": "^0.5.3",
+    "nuxt": "^3.16.2",
+    "nuxt-auth-utils": "^0.5.19",
+    "nuxt-svgo": "^4.0.17",
+    "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.19.3",
+    "zod": "^3.24.2"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
-      "better-sqlite3",
       "esbuild",
       "sharp",
-      "sqlite3",
       "vue-demi"
     ]
   }

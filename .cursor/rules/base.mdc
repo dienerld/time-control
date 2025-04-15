@@ -9,11 +9,12 @@ alwaysApply: true
 
 - Cada módulo deve seguir a estrutura:
   ```
-  modules/
-    ├── [module-name]/
-    │   ├── components/
-    │   ├── composables/
-    │   └── screens/
+  app/
+    ├── modules/
+    │   ├── [module-name]/
+    │   │   ├── components/
+    │   │   ├── composables/
+    │   │   └── screens/
   ```
 
 - Nomes de arquivos:

@@ -1,31 +1,37 @@
-import type { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3'
-import { resolve } from 'node:path'
+import type { LibSQLDatabase } from 'drizzle-orm/libsql'
+import { createClient as createLibSQLClient } from '@libsql/client'
+import { drizzle as drizzleLibSQL } from 'drizzle-orm/libsql'
 
-import { drizzle } from 'drizzle-orm/better-sqlite3'
+import * as tables from '../database/schema'
 
-export * as tables from '../database/schema'
+export { and, eq, gte, lte, type SQL, sql } from 'drizzle-orm'
+export { tables }
 
-export {
-  and,
-  asc,
-  between,
-  desc,
-  getTableColumns,
-  ilike,
-  like,
-  not,
-  or,
-} from 'drizzle-orm'
-
-let database: BetterSQLite3Database | null = null
+let database: LibSQLDatabase<typeof tables> | null = null
 
 export function useDatabase() {
   if (database) {
     return database
   }
-  const url = resolve('database.sqlite')
-  console.log('url', url)
 
-  database = drizzle(url)
+  const { tursoDBURL, tursoDBToken, nodeEnv } = useRuntimeConfig()
+
+  const isLocal = nodeEnv === 'development'
+
+  const credentials = isLocal
+    ? {
+        url: tursoDBURL,
+      }
+    : {
+        url: tursoDBURL,
+        authToken: tursoDBToken || undefined,
+      }
+
+  if (!credentials.url) {
+    throw new Error('Turso DB URL is not set')
+  }
+
+  database = drizzleLibSQL(createLibSQLClient(credentials), { schema: tables })
+
   return database
 }

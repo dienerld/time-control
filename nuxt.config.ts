@@ -6,13 +6,11 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   devtools: { enabled: true },
   future: { compatibilityVersion: 4 },
-  compatibilityDate: '2024-11-11',
+  compatibilityDate: '2025-04-10',
   modules: [
     '@nuxt/ui',
     'nuxt-auth-utils',
-    '@nuxtjs/i18n',
     '@nuxt/image',
-    'nuxt-marquee',
     '@vueuse/motion/nuxt',
     'nuxt-svgo',
   ],
@@ -32,18 +30,5 @@ export default defineNuxtConfig({
   svgo: {
     componentPrefix: 'I',
     autoImportPath: '~/assets/svg',
-  },
-  i18n: {
-    lazy: true,
-    defaultLocale: 'pt_br',
-    locales: [{
-      code: 'pt_br',
-      name: 'Português',
-      file: 'pt-BR.ts',
-    }, {
-      code: 'en',
-      name: 'English',
-      file: 'en.ts',
-    }],
   },
 })
