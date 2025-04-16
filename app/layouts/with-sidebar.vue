@@ -1,12 +1,15 @@
 <script lang="ts" setup>
-
+const { toggleSidebar } = useSharedState()
 </script>
 
 <template>
-  <UContainer>
-    <div class="grid grid-cols-10">
-      <AsideBar class="col-span-2" />
-      <div class="col-span-8 ml-2 border border-red-500">
+  <UContainer class="min-h-screen flex flex-col px-0">
+    <AppHeader @toggle-sidebar="toggleSidebar" />
+    <div class="grid grid-cols-10 flex-1">
+      <div class="col-span-2 hidden lg:block">
+        <AsideBar />
+      </div>
+      <div class="col-span-10 lg:col-span-8 ml-2">
         <slot />
       </div>
     </div>

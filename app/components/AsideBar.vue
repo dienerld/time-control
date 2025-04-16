@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem, NavigationMenuItem } from '@nuxt/ui'
 
+const { isSidebarOpen, toggleSidebar } = useSharedState()
 const navigationMenu = ref<NavigationMenuItem[][]>([
   [
     {
@@ -57,22 +58,14 @@ const userMenuItems = ref<DropdownMenuItem[]>([
 </script>
 
 <template>
-  <aside class="h-screen flex flex-col border-r border-neutral-700">
-    <div class="flex items-center">
-      <UButton
-        variant="ghost"
-        color="neutral"
-        class="w-full justify-start"
-        to="/"
-      >
-        <Logo />
-      </UButton>
-    </div>
+  <!-- Menu lateral para telas grandes -->
+  <aside class="hidden md:flex h-full flex-col border-r border-neutral-700">
+    <UNavigationMenu
+      orientation="vertical"
+      :items="navigationMenu"
+      class="pr-2 flex-1 mt-2"
+    />
 
-    <!-- Menu Principal -->
-    <UNavigationMenu orientation="vertical" :items="navigationMenu" class="pr-2 flex-1 mt-8" />
-
-    <!-- Dropdown de usuário -->
     <UDropdownMenu
       arrow
       :items="userMenuItems"
@@ -81,18 +74,53 @@ const userMenuItems = ref<DropdownMenuItem[]>([
       }"
       class="py-4"
     >
-      <UButton label="Open" icon="lucide:user" color="neutral" variant="ghost" />
+      <UButton
+        label="Open"
+        icon="lucide:user"
+        color="neutral"
+        variant="ghost"
+      />
     </UDropdownMenu>
   </aside>
+
+  <USlideover
+    v-model:open="isSidebarOpen"
+    side="left"
+  >
+    <template #content>
+      <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between p-4 border-b border-neutral-700">
+          <Logo />
+          <UButton
+            color="neutral"
+            variant="ghost"
+            icon="i-lucide-x"
+            @click="toggleSidebar"
+          />
+        </div>
+
+        <UNavigationMenu
+          orientation="vertical"
+          :items="navigationMenu"
+          class="pr-2 flex-1 mt-8"
+        />
+
+        <UDropdownMenu
+          arrow
+          :items="userMenuItems"
+          :ui="{
+            content: 'min-w-60',
+          }"
+          class="py-4"
+        >
+          <UButton
+            label="Open"
+            icon="lucide:user"
+            color="neutral"
+            variant="ghost"
+          />
+        </UDropdownMenu>
+      </div>
+    </template>
+  </USlideover>
 </template>
-
-<style scoped>
-.u-vertical-navigation {
-  --un-bg-opacity: 0;
-}
-
-.u-vertical-navigation :deep(.router-link-active) {
-  color: white;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-</style>
