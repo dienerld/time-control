@@ -11,21 +11,10 @@ const emit = defineEmits<{
     <NuxtLink to="/">
       <Logo />
     </NuxtLink>
-    <nav class="hidden w-full flex-1 items-center justify-center gap-2 lg:flex">
-      <UButton variant="ghost" size="lg" to="/" class="rounded-full">
-        Home
-      </UButton>
-
-      <UButton variant="ghost" size="lg" to="#" class="rounded-full">
-        Instructions
-      </UButton>
-      <UButton variant="ghost" size="lg" to="#" class="rounded-full">
-        Contribution
-      </UButton>
-    </nav>
+    <nav class="hidden w-full flex-1 items-center justify-center gap-2 lg:flex" />
     <div class="flex flex-1 items-center justify-end gap-4 lg:flex-none">
       <UButton
-        to="https://github.com/cesswhite/landingnuxt" target="_blank" icon="i-mdi-github" variant="link"
+        to="https://github.com/cesswhite/landingnuxt" target="_blank" icon="lucide:github" variant="link"
         color="primary" size="lg"
       />
       <AppSwitchPrimaryColor />

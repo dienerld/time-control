@@ -1,10 +1,7 @@
-import { useTimeEntriesService } from '~/modules/time-entries/services'
+import { useClientServices } from '~/modules/clients/services/client.services'
 
 export function useServices() {
   return {
-    clientsService: {
-      get: () => {},
-    },
-    timeEntriesService: useTimeEntriesService(),
+    clientsService: useClientServices(),
   }
 }

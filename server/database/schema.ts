@@ -17,6 +17,7 @@ export const users = sqliteTable('users', {
 
 export const clients = sqliteTable('clients', {
   id: text('id').primaryKey().$defaultFn(() => ulid()),
+  userId: text('user_id').notNull().references(() => users.id),
   name: text('name').notNull(),
   description: text('description'),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),

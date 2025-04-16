@@ -3,6 +3,7 @@ import type { DropdownMenuItem, NavigationMenuItem } from '@nuxt/ui'
 
 const route = useRoute()
 const { isSidebarOpen, toggleSidebar } = useSharedState()
+const { logout } = useSession()
 const navigationMenu = ref<NavigationMenuItem[][]>([
   [
     {
@@ -48,12 +49,14 @@ const userMenuItems = ref<DropdownMenuItem[]>([
     icon: 'i-lucide-user',
   },
   {
-    label: 'Billing',
-    icon: 'i-lucide-credit-card',
+    type: 'separator',
   },
   {
-    label: 'Settings',
-    icon: 'i-lucide-cog',
+    label: 'Logout',
+    icon: 'i-lucide-log-out',
+    onSelect: () => {
+      logout()
+    },
   },
 ])
 
@@ -108,9 +111,7 @@ watch(route, () => {
           orientation="vertical"
           :items="navigationMenu"
           class="pr-2 flex-1 mt-8"
-
-          >
-      </UNavigationMenu>
+        />
 
         <UDropdownMenu
           arrow

@@ -1,15 +1,15 @@
 import { useSafeValidatedParams, useSafeValidatedQuery, z } from 'h3-zod'
 
 export default defineEventHandler(async (event) => {
-  const { user } = await validateAuth(event)
+  const { userId } = await validateAuth(event)
 
   const paramsParsed = await useSafeValidatedParams(event, z.object({
     clientId: z.string().optional(),
   }))
 
   const queryParsed = await useSafeValidatedQuery(event, z.object({
-    startDate: z.string().optional(),
-    endDate: z.string().optional(),
+    startDate: z.coerce.date().optional(),
+    endDate: z.coerce.date().optional(),
   }))
 
   const db = useDatabase()
@@ -22,8 +22,10 @@ export default defineEventHandler(async (event) => {
   }
 
   const timeEntries = await db.query.timeEntries.findMany({
-    where: t => eq(t.userId, user.id),
+    where: t => eq(t.userId, userId),
   })
+
+  await new Promise(resolve => setTimeout(resolve, 3000))
 
   return timeEntries
 })

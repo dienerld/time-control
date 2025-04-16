@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 const { toggleSidebar } = useSharedState()
+const { loggedIn } = useSession()
+
+watch(loggedIn, (value) => {
+  if (!value) {
+    navigateTo('/')
+  }
+})
 </script>
 
 <template>

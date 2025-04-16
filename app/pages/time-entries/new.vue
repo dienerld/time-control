@@ -3,6 +3,7 @@ import TimeEntryNew from '~/modules/time-entries/screens/new.vue'
 
 definePageMeta({
   layout: 'with-sidebar',
+  middleware: 'auth',
 })
 </script>
 

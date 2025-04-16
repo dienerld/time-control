@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import type { NewTimeEntry } from '~~/shared/entities/timeEntry'
+import type { Client } from '~~/shared/entities/client'
+import type { TimeEntryForm } from '~/modules/time-entries/composables/useCreateTimeEntries'
 import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
-import type { Client } from '~~/shared/entities/client';
 
 const props = defineProps<{
   clients: Pick<Client, 'id' | 'name'>[]
   loading: boolean
+  clientsStatus: boolean
 }>()
 const emit = defineEmits<{
   (e: 'submit'): void
 }>()
-const model = defineModel<NewTimeEntry>({ required: true })
+const model = defineModel<TimeEntryForm>({ required: true })
 
-const now =  today('America/Sao_Paulo')
+const now = today('America/Sao_Paulo')
 const startHour = ref('')
 const endHour = ref('')
 
@@ -30,7 +31,6 @@ const shifts = ref([
 function dateNowString() {
   return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
 }
-
 
 watch(date, (newDate) => {
   model.value.date = newDate.toDate(getLocalTimeZone())
@@ -69,6 +69,7 @@ watch(endHour, (newEndHour) => {
           label: client.name,
           value: client.id,
         }))"
+        :loading="props.clientsStatus"
         placeholder="Selecione um cliente"
       />
     </UFormField>
@@ -92,7 +93,7 @@ watch(endHour, (newEndHour) => {
           </UButton>
 
           <template #content>
-            <UCalendar v-model="date" class="p-2"  />
+            <UCalendar v-model="date" class="p-2" />
           </template>
         </UPopover>
 

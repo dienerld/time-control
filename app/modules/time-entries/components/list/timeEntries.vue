@@ -1,12 +1,16 @@
 <script lang="ts" setup>
+import type { Row } from '@tanstack/vue-table'
 import type { TimeEntry } from '~~/shared/entities/timeEntry'
 
 interface TimeEntriesProps {
-  timeEntries: TimeEntry[]
+  timeEntries?: TimeEntry[]
 }
 
-const props = defineProps<TimeEntriesProps>()
-
+const props = withDefaults(defineProps<TimeEntriesProps>(), {
+  timeEntries: () => [],
+})
+const UButton = resolveComponent('UButton')
+const toast = useToast()
 function dateHelperFormat(date: Date) {
   return {
     time: Intl.DateTimeFormat('pt-BR', {
@@ -55,6 +59,32 @@ const parseShift = {
         {
           accessorFn: row => row.endTime ? dateHelperFormat(row.endTime).time : 'Não atribuído',
           header: 'Hora Saída',
+        },
+        {
+          id: 'actions',
+          cell: ({ row }) => {
+            return h(
+              'div',
+              { class: 'text-right' },
+              h(
+                UButton,
+                {
+                  label: row.original.endTime ? 'Editar' : 'Finalizar',
+                  color: row.original.endTime ? 'primary' : 'success',
+                  variant: 'outline',
+                  class: 'ml-auto',
+                  onClick: () => {
+                    toast.add({
+                      title: 'Editar',
+                      color: 'primary',
+                      icon: 'i-lucide-pencil',
+                    })
+                  },
+                },
+              ),
+            )
+          },
+
         },
       ]"
     />
