@@ -18,6 +18,11 @@ export default defineNuxtConfig({
   hub: {
     database: true,
   },
+  nitro: {
+    experimental: {
+      openAPI: true,
+    },
+  },
   runtimeConfig: {
     adminPassword: process.env.ADMIN_PASSWORD,
     databaseDir: resolve('./server/database'),
