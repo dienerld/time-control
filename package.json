@@ -20,7 +20,9 @@
     "@trpc/client": "^11.1.0",
     "@trpc/server": "^11.1.0",
     "@vueuse/motion": "^3.0.3",
+    "dayjs": "^1.11.13",
     "drizzle-orm": "^0.41.0",
+    "maska": "^3.1.1",
     "trpc-nuxt": "^1.0.4",
     "ulid": "^3.0.0"
   },

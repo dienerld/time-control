@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem, NavigationMenuItem } from '@nuxt/ui'
 
+const route = useRoute()
 const { isSidebarOpen, toggleSidebar } = useSharedState()
 const navigationMenu = ref<NavigationMenuItem[][]>([
   [
@@ -55,6 +56,10 @@ const userMenuItems = ref<DropdownMenuItem[]>([
     icon: 'i-lucide-cog',
   },
 ])
+
+watch(route, () => {
+  isSidebarOpen.value = false
+})
 </script>
 
 <template>
@@ -103,7 +108,9 @@ const userMenuItems = ref<DropdownMenuItem[]>([
           orientation="vertical"
           :items="navigationMenu"
           class="pr-2 flex-1 mt-8"
-        />
+
+          >
+      </UNavigationMenu>
 
         <UDropdownMenu
           arrow

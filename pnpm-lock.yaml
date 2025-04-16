@@ -20,9 +20,15 @@ importers:
       '@vueuse/motion':
         specifier: ^3.0.3
         version: 3.0.3(magicast@0.3.5)(vue@3.5.13(typescript@5.8.2))
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       drizzle-orm:
         specifier: ^0.41.0
         version: 0.41.0(@libsql/client@0.15.2)(@types/better-sqlite3@7.6.12)(better-sqlite3@11.9.1)(gel@2.0.1)
+      maska:
+        specifier: ^3.1.1
+        version: 3.1.1
       trpc-nuxt:
         specifier: ^1.0.4
         version: 1.0.4(@trpc/client@11.1.0(@trpc/server@11.1.0(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.0(typescript@5.8.2))
@@ -2449,6 +2455,9 @@ packages:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
 
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+
   db0@0.3.1:
     resolution: {integrity: sha512-3RogPLE2LLq6t4YiFCREyl572aBjkfMvfwPyN51df00TbPbryL3XqBYuJ/j6mgPssPK8AKfYdLxizaO5UG10sA==}
     peerDependencies:
@@ -3690,6 +3699,9 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  maska@3.1.1:
+    resolution: {integrity: sha512-68ZJfZ6/YANwv7CufbQmcCNoHdJnIRxuQgZtSFZe5ltlmZ15ZdA01siUGLh9EfaUX65DN0l/A7g+o2xjTICeGQ==}
 
   mdast-util-find-and-replace@3.0.2:
     resolution: {integrity: sha512-Tmd1Vg/m3Xz43afeNxDIhWRtFZgM2VLyaf4vSTYwudTyeuTneoL3qtWMA5jeLyz/O1vDJmmV4QuScFCA2tBPwg==}
@@ -8101,6 +8113,8 @@ snapshots:
 
   data-uri-to-buffer@4.0.1: {}
 
+  dayjs@1.11.13: {}
+
   db0@0.3.1(@libsql/client@0.15.2)(better-sqlite3@11.9.1)(drizzle-orm@0.41.0(@libsql/client@0.15.2)(@types/better-sqlite3@7.6.12)(better-sqlite3@11.9.1)(gel@2.0.1)):
     optionalDependencies:
       '@libsql/client': 0.15.2
@@ -9387,6 +9401,8 @@ snapshots:
       source-map-js: 1.2.1
 
   markdown-table@3.0.4: {}
+
+  maska@3.1.1: {}
 
   mdast-util-find-and-replace@3.0.2:
     dependencies:

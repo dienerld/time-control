@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import TimeEntryNew from '~/modules/time-entries/screens/new.vue'
+
 definePageMeta({
   layout: 'with-sidebar',
 })
@@ -6,7 +8,7 @@ definePageMeta({
 
 <template>
   <div>
-    <h1>Novo Registro</h1>
+    <TimeEntryNew />
   </div>
 </template>
 
