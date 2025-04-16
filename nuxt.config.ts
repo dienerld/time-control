@@ -13,12 +13,14 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/motion/nuxt',
     'nuxt-svgo',
+    '@nuxthub/core',
   ],
+  hub: {
+    database: true,
+  },
   runtimeConfig: {
     adminPassword: process.env.ADMIN_PASSWORD,
     databaseDir: resolve('./server/database'),
-    tursoDBURL: process.env.TURSO_DB_URL,
-    tursoDBToken: process.env.TURSO_DB_TOKEN,
     nodeEnv: process.env.NODE_ENV,
     public: {
       contact: {
