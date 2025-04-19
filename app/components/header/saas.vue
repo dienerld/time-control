@@ -6,21 +6,7 @@
       <Logo />
     </div>
     <nav class="hidden  items-center justify-center md:flex">
-      <UButton variant="link" color="primary" size="lg" to="#">
-        Home
-      </UButton>
-      <UButton variant="link" color="primary" size="lg" to="#">
-        About
-      </UButton>
-      <UButton variant="link" color="primary" size="lg" to="#">
-        Services
-      </UButton>
-      <UButton variant="link" color="primary" size="lg" to="#">
-        Contact
-      </UButton>
-      <UButton variant="link" color="primary" size="lg" to="#">
-        Blog
-      </UButton>
+
     </nav>
     <div class="flex  items-center justify-end gap-2">
       <UButton label="Sign in" variant="ghost" class="hidden md:block" color="primary" size="lg" to="/auth/signin" />

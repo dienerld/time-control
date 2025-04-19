@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { Row } from '@tanstack/vue-table'
 import type { TimeEntry } from '~~/shared/entities/timeEntry'
 
 interface TimeEntriesProps {
@@ -59,9 +58,11 @@ const parseShift = {
         {
           accessorFn: row => row.endTime ? dateHelperFormat(row.endTime).time : 'Não atribuído',
           header: 'Hora Saída',
+          enableSorting: true,
         },
         {
           id: 'actions',
+          header: 'Ações',
           cell: ({ row }) => {
             return h(
               'div',

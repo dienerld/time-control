@@ -11,7 +11,6 @@ const { data: timeEntries, status } = await useLazyFetch('/api/time-entries', {
       endTime: timeEntry.endTime ? new Date(timeEntry.endTime) : null,
     }))
   },
-  cache: 'force-cache',
 })
 </script>
 

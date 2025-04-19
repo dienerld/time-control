@@ -2,16 +2,28 @@
 import type { Client } from '~~/shared/entities/client'
 import type { TimeEntryForm } from '~/modules/time-entries/composables/useCreateTimeEntries'
 import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
+import { z } from 'zod'
 
 const props = defineProps<{
   clients: Pick<Client, 'id' | 'name'>[]
   loading: boolean
   clientsStatus: boolean
 }>()
+
 const emit = defineEmits<{
   (e: 'submit'): void
 }>()
+
 const model = defineModel<TimeEntryForm>({ required: true })
+
+const schema = z.object({
+  clientId: z.string().min(1).refine(value => value !== '-', { message: 'Selecione um cliente' }),
+  date: z.date(),
+  startTime: z.date(),
+  endTime: z.date().optional(),
+  description: z.string().min(1),
+  shift: z.enum(['morning', 'afternoon', 'night']),
+})
 
 const now = today('America/Sao_Paulo')
 const startHour = ref('')
@@ -61,8 +73,13 @@ watch(endHour, (newEndHour) => {
 </script>
 
 <template>
-  <form class="grid grid-cols-1 md:grid-cols-2 gap-4" @submit.prevent="emit('submit')">
-    <UFormField label="Cliente" class="w-full">
+  <UForm
+    :schema="schema"
+    :state="model"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4"
+    @submit.prevent="emit('submit')"
+  >
+    <UFormField label="Cliente" name="clientId">
       <USelect
         v-model="model.clientId"
         :items="[{ id: '-', name: 'Nenhum' }, ...props.clients].map(client => ({
@@ -74,7 +91,7 @@ watch(endHour, (newEndHour) => {
       />
     </UFormField>
 
-    <UFormField label="Turno">
+    <UFormField label="Turno" name="shift">
       <URadioGroup
         v-model="model.shift"
         :items="shifts"
@@ -85,7 +102,7 @@ watch(endHour, (newEndHour) => {
       />
     </UFormField>
 
-    <UFormField label="Data">
+    <UFormField label="Data" name="date">
       <div class="flex items-center gap-2">
         <UPopover>
           <UButton color="neutral" variant="subtle" icon="i-lucide-calendar">
@@ -106,7 +123,7 @@ watch(endHour, (newEndHour) => {
     </UFormField>
 
     <div class="grid grid-cols-2 gap-2">
-      <UFormField label="Hora de Entrada">
+      <UFormField label="Hora de Entrada" name="startTime">
         <UInput
           v-model="startHour"
           v-maska="'##:##:##'"
@@ -123,7 +140,7 @@ watch(endHour, (newEndHour) => {
         </UInput>
       </UFormField>
 
-      <UFormField label="Hora de Saída">
+      <UFormField label="Hora de Saída" name="endTime">
         <UInput
           v-model="endHour"
           v-maska="'##:##:##'"
@@ -141,7 +158,7 @@ watch(endHour, (newEndHour) => {
       </UFormField>
     </div>
 
-    <UFormField label="Descrição" class="col-span-full">
+    <UFormField label="Descrição" class="col-span-full" name="description">
       <UTextarea
         v-model="model.description"
         class="w-full"
@@ -158,7 +175,7 @@ watch(endHour, (newEndHour) => {
     >
       Registrar
     </UButton>
-  </form>
+  </UForm>
 </template>
 
 <style>
