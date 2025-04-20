@@ -23,23 +23,7 @@
           to="/auth/signup"
         />
       </div>
-      <!-- <UDropdown
-        :items="[
-          { label: 'Sign in', to: '/auth/signin' },
-          { label: 'Sign up', to: '/auth/signup' },
-        ]"
-        :ui="{
-          trigger: 'flex md:hidden items-center',
-          item: 'flex items-center gap-2 cursor-pointer',
-        }"
-      >
-        <UButton
-          icon="i-heroicons-user-circle"
-          variant="ghost"
-          color="primary"
-          size="lg"
-        />
-      </UDropdown> -->
+
       <ThemeSwitch />
     </div>
   </header>

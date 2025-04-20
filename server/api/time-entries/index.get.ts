@@ -25,7 +25,5 @@ export default defineEventHandler(async (event) => {
     where: t => eq(t.userId, userId),
   })
 
-  await new Promise(resolve => setTimeout(resolve, 3000))
-
   return timeEntries
 })

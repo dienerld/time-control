@@ -54,19 +54,11 @@ async function handleSubmit() {
         </div>
 
         <UAlert
-          v-if="error"
-          color="error"
-          variant="soft"
-          :title="error"
-          class="mt-4"
+          v-if="error" color="error" variant="soft" :title="error" class="mt-4"
         />
 
         <div class="mt-4">
-          <UButton
-            type="submit"
-            color="primary"
-            block
-          >
+          <UButton type="submit" color="primary" block>
             Entrar
           </UButton>
         </div>

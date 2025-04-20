@@ -57,7 +57,7 @@ const parseShift = {
       },
       {
         id: 'actions',
-        header: 'Ações',
+        header: () => h('div', { class: 'text-right' }, 'Ações'),
         cell: ({ row }) => {
           return h(
             'div',
