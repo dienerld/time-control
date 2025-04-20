@@ -8,3 +8,5 @@ export type NewClient = InferInsertModel<typeof clients>
 export type ClientWithTimeEntries = Client & {
   timeEntries: TimeEntry[]
 }
+
+export interface UpdateClient extends Partial<NewClient> {}

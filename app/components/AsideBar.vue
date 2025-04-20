@@ -4,6 +4,7 @@ import type { DropdownMenuItem, NavigationMenuItem } from '@nuxt/ui'
 const route = useRoute()
 const { isSidebarOpen, toggleSidebar } = useSharedState()
 const { logout } = useSession()
+
 const navigationMenu = ref<NavigationMenuItem[][]>([
   [
     {
@@ -17,26 +18,20 @@ const navigationMenu = ref<NavigationMenuItem[][]>([
       to: '/time-entries/new',
     },
     {
-      label: 'Composables',
-      icon: 'i-lucide-database',
+      label: 'Clientes',
+      icon: 'lucide:building',
       children: [
         {
-          label: 'defineShortcuts',
-          icon: 'i-lucide-file-text',
-          description: 'Define shortcuts for your application.',
-          to: '/composables/define-shortcuts',
+          label: 'Listagem',
+          icon: 'lucide:list',
+          description: 'Liste todas as empresas.',
+          to: '/clients',
         },
         {
-          label: 'useOverlay',
-          icon: 'i-lucide-file-text',
-          description: 'Display a modal/slideover within your application.',
-          to: '/composables/use-overlay',
-        },
-        {
-          label: 'useToast',
-          icon: 'i-lucide-file-text',
-          description: 'Display a toast within your application.',
-          to: '/composables/use-toast',
+          label: 'Novo',
+          icon: 'lucide:plus',
+          description: 'Crie uma nova empresa.',
+          to: '/clients/new',
         },
       ],
     },
@@ -112,22 +107,24 @@ watch(route, () => {
           :items="navigationMenu"
           class="pr-2 flex-1 mt-8"
         />
-
-        <UDropdownMenu
-          arrow
-          :items="userMenuItems"
-          :ui="{
-            content: 'min-w-60',
-          }"
-          class="py-4"
-        >
-          <UButton
-            label="Open"
-            icon="lucide:user"
-            color="neutral"
-            variant="ghost"
-          />
-        </UDropdownMenu>
+        <div class="flex justify-between items-center p-2 border-t border-neutral-300">
+          <UDropdownMenu
+            arrow
+            :items="userMenuItems"
+            :ui="{
+              content: 'min-w-60',
+            }"
+            class="py-4"
+          >
+            <UButton
+              label="Open"
+              icon="lucide:user"
+              color="neutral"
+              variant="ghost"
+            />
+          </UDropdownMenu>
+          <AppSwitchMode />
+        </div>
       </div>
     </template>
   </USlideover>

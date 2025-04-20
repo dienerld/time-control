@@ -48,7 +48,9 @@ export default defineEventHandler(async (event) => {
   }
 
   await setUserSession(event, {
-    id: user.id.toString(),
+    user: {
+      id: user.id.toString(),
+    },
   })
 
   return {

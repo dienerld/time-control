@@ -15,6 +15,13 @@
       "when": 1744775842631,
       "tag": "0001_gifted_pandemic",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1745027082076,
+      "tag": "0002_spotty_rage",
+      "breakpoints": true
     }
   ]
 }

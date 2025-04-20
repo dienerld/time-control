@@ -22,6 +22,8 @@ export default defineNuxtConfig({
     '@vueuse/motion/nuxt',
     'nuxt-svgo',
     '@nuxthub/core',
+    '@vueuse/nuxt',
+    'nuxt-mcp',
   ],
   hub: {
     database: true,

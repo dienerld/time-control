@@ -2,9 +2,17 @@ export default defineEventHandler(async (event) => {
   const { userId } = await validateAuth(event)
   const db = useDatabase()
 
-  const clients = await db.query.clients.findMany({
-    where: t => eq(t.userId, userId),
-  })
+  if (!db) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Database not available',
+    })
+  }
 
-  return clients
+  const clientsList = await db
+    .select()
+    .from(tables.clients)
+    .where(eq(tables.clients.userId, userId))
+
+  return clientsList
 })

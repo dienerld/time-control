@@ -3,6 +3,7 @@ import AuthSignin from '~/modules/auth/screens/signin/index.vue'
 
 definePageMeta({
   layout: 'empty',
+  middleware: 'not-auth',
 })
 </script>
 

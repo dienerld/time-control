@@ -5,9 +5,7 @@
     <div class="flex w-auto items-center justify-start">
       <Logo />
     </div>
-    <nav class="hidden  items-center justify-center md:flex">
-
-    </nav>
+    <nav class="hidden  items-center justify-center md:flex" />
     <div class="flex  items-center justify-end gap-2">
       <UButton label="Sign in" variant="ghost" class="hidden md:block" color="primary" size="lg" to="/auth/signin" />
       <UButton label="Sign up" variant="solid" color="primary" class="hidden md:block" size="lg" to="/auth/signup" />

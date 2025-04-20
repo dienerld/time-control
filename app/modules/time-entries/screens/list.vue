@@ -15,15 +15,33 @@ const { data: timeEntries, status } = await useLazyFetch('/api/time-entries', {
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">
-      Registro de Horas
-    </h1>
+  <MainContent>
+    <div class="flex justify-between mb-8 items-center">
+      <div>
+        <h1 class="text-2xl font-bold">
+          Registro de Horas
+        </h1>
+        <p class="mt-1 text-sm">
+          Gerencie seus registros de horas trabalhadas
+        </p>
+      </div>
 
-    <div class="mt-8">
+      <UButton
+        color="primary"
+        to="/time-entries/new"
+        icon="heroicons:plus"
+        class="flex items-center gap-2"
+        :ui="{
+          label: 'hidden md:block',
+        }"
+        label="Novo Registro de Horas"
+      />
+    </div>
+
+    <UCard>
       <TimeEntriesLoader :loading="status === 'pending'">
         <TimeEntriesList :time-entries="timeEntries" />
       </TimeEntriesLoader>
-    </div>
-  </div>
+    </UCard>
+  </MainContent>
 </template>

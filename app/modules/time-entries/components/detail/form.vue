@@ -17,7 +17,7 @@ const emit = defineEmits<{
 const model = defineModel<TimeEntryForm>({ required: true })
 
 const schema = z.object({
-  clientId: z.string().min(1).refine(value => value !== '-', { message: 'Selecione um cliente' }),
+  clientId: z.string().nullable().transform(value => value === '-' || value === '' ? null : value),
   date: z.date(),
   startTime: z.date(),
   endTime: z.date().optional(),
@@ -76,105 +76,165 @@ watch(endHour, (newEndHour) => {
   <UForm
     :schema="schema"
     :state="model"
-    class="grid grid-cols-1 md:grid-cols-2 gap-4"
+    class="w-full"
     @submit.prevent="emit('submit')"
   >
-    <UFormField label="Cliente" name="clientId">
-      <USelect
-        v-model="model.clientId"
-        :items="[{ id: '-', name: 'Nenhum' }, ...props.clients].map(client => ({
-          label: client.name,
-          value: client.id,
-        }))"
-        :loading="props.clientsStatus"
-        placeholder="Selecione um cliente"
-      />
-    </UFormField>
-
-    <UFormField label="Turno" name="shift">
-      <URadioGroup
-        v-model="model.shift"
-        :items="shifts"
-        option-attribute="label"
-        value-attribute="value"
-        placeholder="Selecione um turno"
-        orientation="horizontal"
-      />
-    </UFormField>
-
-    <UFormField label="Data" name="date">
-      <div class="flex items-center gap-2">
-        <UPopover>
-          <UButton color="neutral" variant="subtle" icon="i-lucide-calendar">
-            {{ model.date ? df.format(model.date) : 'Selecione uma data' }}
-          </UButton>
-
-          <template #content>
-            <UCalendar v-model="date" class="p-2" />
-          </template>
-        </UPopover>
-
-        <UButton
-          color="neutral" variant="soft" size="md"
-          label="Hoje"
-          @click="date = new CalendarDate(now.year, now.month, now.day)"
+    <div class="grid grid-cols-1 gap-6">
+      <UFormField label="Cliente" name="clientId" class="col-span-full text-base" required>
+        <USelect
+          v-model="model.clientId"
+          required
+          :items="[{ id: '-', name: 'Nenhum' }, ...props.clients].map(client => ({
+            label: client.name,
+            value: client.id,
+          }))"
+          :loading="props.clientsStatus"
+          placeholder="Selecione um cliente"
+          size="lg"
+          class="w-full"
         />
-      </div>
-    </UFormField>
+      </UFormField>
 
-    <div class="grid grid-cols-2 gap-2">
-      <UFormField label="Hora de Entrada" name="startTime">
-        <UInput
-          v-model="startHour"
-          v-maska="'##:##:##'"
-          placeholder="09:00:00"
-          :ui="{ trailing: 'pe-1' }"
-        >
-          <template #trailing>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <UFormField label="Data" name="date" class="text-base" required>
+          <div class="flex items-center gap-2 w-full">
+            <UPopover>
+              <UButton color="neutral" variant="soft" icon="i-lucide-calendar" size="lg" class="flex-1 justify-start">
+                {{ model.date ? df.format(model.date) : 'Selecione uma data' }}
+              </UButton>
+
+              <template #content>
+                <UCalendar v-model="date" class="p-2" />
+              </template>
+            </UPopover>
+
             <UButton
-              icon="i-lucide-clock" variant="ghost" size="sm"
-              aria-label="Selecionar hora atual"
+              color="neutral"
+              variant="soft"
+              size="lg"
+              label="Hoje"
+              class="shrink-0"
+              @click="date = new CalendarDate(now.year, now.month, now.day)"
+            />
+          </div>
+        </UFormField>
+
+        <UFormField label="Turno" name="shift" class="text-base" required>
+          <URadioGroup
+            v-model="model.shift"
+            :items="shifts"
+            option-attribute="label"
+            value-attribute="value"
+            placeholder="Selecione um turno"
+            orientation="horizontal"
+            size="lg"
+            class="flex flex-wrap gap-2 justify-between w-full"
+          />
+        </UFormField>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <UFormField label="Hora de Entrada" name="startTime" class="text-base" required>
+          <div class="flex items-center gap-2 w-full">
+            <UInput
+              v-model="startHour"
+              v-maska="'##:##:##'"
+              placeholder="09:00:00"
+              size="lg"
+              class="flex-1"
+              :ui="{
+                base: 'relative flex w-full',
+                trailing: 'absolute inset-y-0 right-0 flex items-center pr-2',
+              }"
+            >
+              <template #trailing>
+                <UButton
+                  icon="i-lucide-clock"
+                  variant="ghost"
+                  size="sm"
+                  color="neutral"
+                  aria-label="Selecionar hora atual"
+                  class="hidden md:flex"
+                  @click="startHour = dateNowString()"
+                />
+              </template>
+            </UInput>
+            <UButton
+              color="neutral"
+              variant="soft"
+              size="lg"
+              icon="i-lucide-clock"
+              label="Agora"
+              class="md:hidden shrink-0"
               @click="startHour = dateNowString()"
             />
-          </template>
-        </UInput>
-      </UFormField>
+          </div>
+        </UFormField>
 
-      <UFormField label="Hora de Saída" name="endTime">
-        <UInput
-          v-model="endHour"
-          v-maska="'##:##:##'"
-          placeholder="12:30:00"
-          :ui="{ trailing: 'pe-1' }"
-        >
-          <template #trailing>
+        <UFormField label="Hora de Saída" name="endTime" class="text-base">
+          <div class="flex items-center gap-2 w-full">
+            <UInput
+              v-model="endHour"
+              v-maska="'##:##:##'"
+              placeholder="12:30:00"
+              size="lg"
+              class="flex-1"
+              :ui="{
+                base: 'relative flex w-full',
+                trailing: 'absolute inset-y-0 right-0 flex items-center pr-2',
+              }"
+            >
+              <template #trailing>
+                <UButton
+                  icon="i-lucide-clock"
+                  variant="ghost"
+                  size="sm"
+                  color="neutral"
+                  aria-label="Selecionar hora atual"
+                  class="hidden md:flex"
+                  @click="endHour = dateNowString()"
+                />
+              </template>
+            </UInput>
             <UButton
-              icon="i-lucide-clock" variant="ghost" size="sm"
-              aria-label="Selecionar hora atual"
+              color="neutral"
+              variant="soft"
+              size="lg"
+              icon="i-lucide-clock"
+              label="Agora"
+              class="md:hidden shrink-0"
               @click="endHour = dateNowString()"
             />
-          </template>
-        </UInput>
+          </div>
+        </UFormField>
+      </div>
+
+      <UFormField label="Descrição" class="col-span-full text-base" name="description">
+        <UTextarea
+          v-model="model.description"
+          class="w-full"
+          placeholder="Descreva o que foi desenvolvido"
+          size="lg"
+          :ui="{
+            base: 'relative flex w-full min-h-[120px] resize-y',
+          }"
+        />
       </UFormField>
+
+      <div class="flex justify-end">
+        <UButton
+          type="submit"
+          :loading="props.loading"
+          color="primary"
+          size="lg"
+          icon="i-lucide-save"
+          class="w-full md:w-auto"
+          block
+        >
+          Registrar Horas
+        </UButton>
+      </div>
     </div>
-
-    <UFormField label="Descrição" class="col-span-full" name="description">
-      <UTextarea
-        v-model="model.description"
-        class="w-full"
-        placeholder="Descreva o que foi desenvolvido"
-      />
-    </UFormField>
-
-    <UButton
-      class="col-span-full"
-      type="submit"
-      :loading="props.loading"
-      color="primary"
-      block
-    >
-      Registrar
-    </UButton>
   </UForm>
 </template>
 

@@ -14,13 +14,24 @@ const clients = computed(() => clientsData.value?.map(client => ({
 
 <template>
   <MainContent>
-    <TimeEntryForm
-      v-model="timeEntry"
-      :clients="clients"
-      :loading="loading"
-      :clients-status="clientsStatus === 'pending'"
-      @submit="save"
-    />
+    <div class="mb-8">
+      <h1 class="text-2xl font-bold">
+        Novo Registro de Horas
+      </h1>
+      <p class="mt-1 text-sm">
+        Registre suas horas trabalhadas
+      </p>
+    </div>
+
+    <UCard>
+      <TimeEntryForm
+        v-model="timeEntry"
+        :clients="clients"
+        :loading="loading"
+        :clients-status="clientsStatus === 'pending'"
+        @submit="save"
+      />
+    </UCard>
   </MainContent>
 </template>
 

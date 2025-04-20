@@ -14,6 +14,9 @@ useHead({
     <UApp
       :toaster="{ position: 'top-center', duration: 3000 }"
       :locale="pt_br"
+      :tooltip="{
+        delayDuration: 100,
+      }"
     >
       <NuxtPage />
     </UApp>

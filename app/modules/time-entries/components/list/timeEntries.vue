@@ -34,62 +34,56 @@ const parseShift = {
 </script>
 
 <template>
-  <div>
-    <h2 class="text-xl font-semibold mb-2">
-      Registros da Última Semana
-    </h2>
-
-    <UTable
-      :data="props.timeEntries"
-      empty="Nenhum registro"
-      :columns="[
-        {
-          accessorFn: (row) => dateHelperFormat(row.date).date,
-          header: 'Data',
-        },
-        {
-          accessorFn: row => parseShift[row.shift],
-          header: 'Turno',
-        },
-        {
-          accessorFn: row => dateHelperFormat(row.startTime).time,
-          header: 'Hora Entrada',
-        },
-        {
-          accessorFn: row => row.endTime ? dateHelperFormat(row.endTime).time : 'Não atribuído',
-          header: 'Hora Saída',
-          enableSorting: true,
-        },
-        {
-          id: 'actions',
-          header: 'Ações',
-          cell: ({ row }) => {
-            return h(
-              'div',
-              { class: 'text-right' },
-              h(
-                UButton,
-                {
-                  label: row.original.endTime ? 'Editar' : 'Finalizar',
-                  color: row.original.endTime ? 'primary' : 'success',
-                  variant: 'outline',
-                  class: 'ml-auto',
-                  onClick: () => {
-                    toast.add({
-                      title: 'Editar',
-                      color: 'primary',
-                      icon: 'i-lucide-pencil',
-                    })
-                  },
+  <UTable
+    :data="props.timeEntries"
+    empty="Nenhum registro"
+    :columns="[
+      {
+        accessorFn: (row) => dateHelperFormat(row.date).date,
+        header: 'Data',
+      },
+      {
+        accessorFn: row => parseShift[row.shift],
+        header: 'Turno',
+      },
+      {
+        accessorFn: row => dateHelperFormat(row.startTime).time,
+        header: 'Hora Entrada',
+      },
+      {
+        accessorFn: row => row.endTime ? dateHelperFormat(row.endTime).time : 'Não atribuído',
+        header: 'Hora Saída',
+        enableSorting: true,
+      },
+      {
+        id: 'actions',
+        header: 'Ações',
+        cell: ({ row }) => {
+          return h(
+            'div',
+            { class: 'text-right' },
+            h(
+              UButton,
+              {
+                label: row.original.endTime ? 'Editar' : 'Finalizar',
+                color: row.original.endTime ? 'primary' : 'success',
+                variant: 'outline',
+                class: 'ml-auto',
+                onClick: () => {
+                  toast.add({
+                    title: 'Editar',
+                    color: 'primary',
+                    icon: 'i-lucide-pencil',
+                  })
                 },
-              ),
-            )
-          },
-
+              },
+            ),
+          )
         },
-      ]"
-    />
-  </div>
+
+      },
+    ]"
+  />
 </template>
 
 <style>

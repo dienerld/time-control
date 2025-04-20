@@ -19,8 +19,14 @@ export const clients = sqliteTable('clients', {
   id: text('id').primaryKey().$defaultFn(() => ulid()),
   userId: text('user_id').notNull().references(() => users.id),
   name: text('name').notNull(),
+  cnpj: text('cnpj').unique(),
+  address: text('address'),
+  phone: text('phone'),
+  email: text('email'),
+  contactName: text('contact_name'),
   description: text('description'),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 })
 
 export const timeEntries = sqliteTable('time_entries', {
@@ -39,10 +45,15 @@ export const timeEntries = sqliteTable('time_entries', {
 // Relações
 export const usersRelations = relations(users, ({ many }) => ({
   timeEntries: many(timeEntries),
+  clients: many(clients),
 }))
 
-export const clientsRelations = relations(clients, ({ many }) => ({
+export const clientsRelations = relations(clients, ({ many, one }) => ({
   timeEntries: many(timeEntries),
+  user: one(users, {
+    fields: [clients.userId],
+    references: [users.id],
+  }),
 }))
 
 export const timeEntriesRelations = relations(timeEntries, ({ one }) => ({

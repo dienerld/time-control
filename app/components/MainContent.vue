@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col gap-2 p-4 max-w-full overflow-x-hidden overflow-y-auto">
+  <main class="flex flex-col gap-2 py-4 container mx-auto px-4 lg:px-8">
     <slot />
   </main>
 </template>
